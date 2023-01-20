@@ -9,3 +9,22 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Brand {
+  id Int @id @default(autoincrement())
+
+  name      String
+  computers Computer[]
+}
+
+model Computer {
+  id Int @id @default(autoincrement())
+
+  cpu     String
+  ram     Float
+  gpu     String
+  storage Float
+  price   Float
+  brand   Brand  @relation(fields: [brandId], references: [id])
+  brandId Int
+}

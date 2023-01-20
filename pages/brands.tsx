@@ -1,9 +1,11 @@
 import { TBrand, fakeBrands } from '@/services/fakeData'
 import { GetStaticProps } from 'next'
 import React from 'react'
+import prisma from "../lib/prisma";
+import { Brand } from '@prisma/client';
 
 interface BrandsProps {
-  brands: TBrand[];
+  brands: Array<Brand>;
 }
 
 const Brands: React.FC<BrandsProps> = ({brands}) => {
@@ -26,7 +28,9 @@ const Brands: React.FC<BrandsProps> = ({brands}) => {
 export default Brands
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const brands = fakeBrands;
+  // const brands = fakeBrands;
+
+  const brands = await prisma.brand.findMany();
 
   return {
     props: {
