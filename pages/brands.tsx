@@ -3,6 +3,23 @@ import { GetStaticProps } from 'next'
 import React from 'react'
 import prisma from "../lib/prisma";
 import { Brand } from '@prisma/client';
+import {Typography} from 'antd'
+import Table, { ColumnsType } from 'antd/es/table';
+
+const {Title} = Typography
+
+const columns: ColumnsType<Brand> = [
+  {
+    title: 'id',
+    dataIndex: 'id',
+    key: 'id',
+  },
+  {
+    title: 'name',
+    dataIndex: 'name',
+    key: 'name',
+  },
+];
 
 interface BrandsProps {
   brands: Array<Brand>;
@@ -11,16 +28,9 @@ interface BrandsProps {
 const Brands: React.FC<BrandsProps> = ({brands}) => {
   return (
     <div>
-      <h1>Brands Avalible:</h1>
+      <Title level={3}>Brands Avalible:</Title>
       <br />
-     <ul>
-      {brands.map((brand, index) => {
-        return <div key={index}>
-          <span>{brand.id}</span>
-          <span>{brand.name}</span>
-        </div>
-      })}
-     </ul>
+      <Table dataSource={brands} columns={columns} />
     </div>
   )
 }

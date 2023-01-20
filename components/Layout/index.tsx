@@ -5,6 +5,7 @@ import {Typography} from 'antd';
 
 const {Link} = Typography
 
+
 const items: MenuProps['items'] = [
   {
     label: <Link href="/">Home</Link>,
@@ -49,7 +50,7 @@ const ApplicationLayout = ({children}: ApplicationLayoutProps) => {
   return (
       <Layout>
         <Header><Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} theme='dark'/></Header>
-        <Content>{children}</Content>
+        <Content style={{padding: '50px 50px'}}>{children}</Content>
         <Footer>Project NextJs 20223</Footer>
       </Layout>
   )
