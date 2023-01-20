@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       brands // Concatena com a props
     },
-    revalidate: 10 
+    
     /* 
     De quanto em quanto tempo os dados vão ser requisitados denovo.
     Só funciona em produção
